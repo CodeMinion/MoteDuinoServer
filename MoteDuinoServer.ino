@@ -76,6 +76,16 @@
  * properly and compiled. If you find a better solution
  * let me know. 
  * 
+ * Conflit: RobotRemote library has a file that shares
+ * the same name as in the Arduino-IRemote library. Make
+ * sure to remove it.
+ *
+ * Setup Notes:
+ * IR Pin: Wire to pin 9 if using ATmega1280 or ATmega2560,
+ * otherwise wire to Pin 3.
+ * BT Module: Wire module Module TX to Arduino RX(Pin0). Wire
+ * Module RX to Arduino TX (Pin1). Wire Module Power to Arduino
+ * 5V and wire Module Ground to Arduino Ground. 
  */
 #include <IRremote.h>
 #include <SoftwareSerial.h>

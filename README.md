@@ -7,6 +7,8 @@ MoteDuino Android App (https://play.google.com/store/apps/details?id=codeminion.
 
 Arduino Setup:
 1- IR LED on Pin 9 as per the requirements of the library Arduino-IRremote.
+1a - If you are using ATmega1280 or ATmega2560 you must use Pin 9.
+1b - If you are using Uno or any similar board you must use Pin 3.
 2- Bluetooth module RX connected to Arduino TX (Pin 1)
 3- Bluetooth module TX connected to Arduino RX (Pin 0)
 4- Bluetooth module PWR to Arduino 5V
