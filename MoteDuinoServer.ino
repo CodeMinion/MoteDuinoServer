@@ -175,7 +175,7 @@ IRsend irsend;
 String cmdIn = "";
 boolean cmdComplete = false;
 
-//SoftwareSerial mySerial(10,11);
+SoftwareSerial mySerial(10,11); // RX, TX
 void setup() 
 {
   Serial.begin(9600);
@@ -186,14 +186,20 @@ void setup()
   cmdIn.reserve(200);
   Serial.println("MoteDuino Ready\n");
   
-  //mySerial.begin(9600);
-  //mySerial.println("Serial Ready");
+  mySerial.begin(9600);
+  mySerial.println("Serial Ready");
   
 }
 
 
 void loop() 
 {
+  // serialEvent only fires with hardware serial.
+  // So call this here
+  if(mySerial.available()> 0)
+  {
+    serialEvent(); 
+  }
   
   if(!cmdComplete)
   {
@@ -372,9 +378,11 @@ boolean handleMenuCommand(String cmdIn)
 }
 void retrieveCommand()
 {
-  while(Serial.available())
+  //while(Serial.available())
+  while(mySerial.available())
   {
-    char inChar = (char)Serial.read();
+    //char inChar = (char)Serial.read();
+    char inChar = (char)mySerial.read();
     if(inChar == '\n' || inChar =='\r')
     {
       cmdComplete = true;
